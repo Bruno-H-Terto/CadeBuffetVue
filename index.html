@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-Br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +8,21 @@
 
 </head>
 <body>
-  <h1>Cadê Buffet</h1>
+  <div id="app">
+  <h1><a href="index.html">Cadê Buffet</a></h1>
   <header>
-    <input type="text" placeholder="Busque o seu Buffet">
-    <input type="submit" value="Pesquisar">
+
+    <div v-if="alerts.length > 0">
+      <div v-for="alert in alerts" id="notice">{{alert}}</div>
+    </div>
+
+    <form id="search" v-on:submit.prevent="searchBuffet()" >
+      <label for="Find">Buffets:</label>
+      <input type="text" id="Search" name="Search">
+      <br>
+      <button type="button" v-on:click="searchBuffet()">Pesquisar</button>
+    </form>
+
     <nav>
       <aside>
         <ul class="list-group">
@@ -23,8 +34,9 @@
     </nav>
   </header>
 
-
-
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>

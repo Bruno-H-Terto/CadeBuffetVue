@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulte a disponbilidade do Evento</title>
+</head>
+<body>
+  <header>
+      <h1><a href="index.html">Cadê Buffet</a></h1>
+    <nav>
+
+      <aside>
+        <ul class="list-group">
+
+          <li  class="list-group-item">
+            <a href="index.html">Home</a>
+          </li>
+
+          <li class="list-group-item">
+            <a href="listing.html">Listar todos os Buffets</a>
+          </li>
+
+        </ul>
+      </aside>
+
+    </nav>
+  </header>
+
+  <section id="app">
+    <form id="availabilityEvent" v-on:submit.prevent="availabilityEvent()" >
+      <label for="Date">Data</label>
+      <input type="date" id="estimated_date" name="estimated_date">
+      <br>
+      <label for="Estimated_people">Número de convidados</label>
+      <input type="number" id="people" name="people" min="1">
+      <br>
+      <button type="button" v-on:click="availabilityEvent()">Verificar</button>
+    </form>
+
+    <div v-for="result in listResult">
+      <p>{{result.message}}</p>
+      <p>{{result.estimated_date_present}}</p>
+      <p>{{result.base_price_event}}</p>
+      <p>{{result.estimated_people}}</p>
+      <p>{{result.min_quantity_people}}</p>
+      <p>{{result.max_quantity_people}}</p>
+      <p>{{result.estimated_date}}</p>
+    </div>
+
+    <div> </div>
+
+  </section>  
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="availability.js"></script>
+</body>
+</html>
