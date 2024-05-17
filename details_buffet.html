@@ -36,34 +36,31 @@
     <div v-for="item in listBuffets">
       <h2>Buffet</h2>
       <div>
-        <address>{{ item.brand_name }}</address>
-        <address>{{item.corporate_name}}</address>
-        <address>{{item.register_number}}</address>
-        <address>{{item.phone_number}}</address>
-        <address>{{item.address}}</address>
-        <address>{{item.district}}</address>
-        <address>{{item.state}}</address>
-        <address>{{item.city}}</address>
-        <address>{{item.zip_code}}</address>
-        <address>{{item.description}}</address>
-        <address>{{item.payment_methods}}</address>
-        <address>{{item.message}}</address>
+        <address>Nome Fantasia: {{item.brand_name}}</address>
+        <address>Telefone para contato: {{item.phone_number}}</address>
+        <address>Endereço: {{item.address}}</address>
+        <address>Bairro: {{item.district}}</address>
+        <address>Estado: {{item.state}}</address>
+        <address>Cidade: {{item.city}}</address>
+        <address>CEP: {{item.zip_code}}</address>
+        <address>Descrição: {{item.description}}</address>
+        <address>Métodos de pagamento: {{item.payment_methods}}</address>
       </div>
     </div>
 
     <h2>Eventos</h2>
     <div v-for="item in listEvents">
       <div v-if="listEvents.length > 0">
-        <p>Consulte a disponbilidade do evento: </p><button v-on:click="availabilityEvent(item.id)">{{item.name}}</button>
-        <address>{{item.alcoholic_drink}}</address>
-        <address>{{item.duration_in_minutes}}</address>
-        <address>{{item.fixed_location}}</address>
-        <address>{{item.max_quantity_people}}</address>
-        <address>{{item.min_quantity_people}}</address>
-        <address>{{item.menu}}</address>
-        <address>{{item.parking}}</address>
-        <address>{{item.self_decoration}}</address>
-        <address>{{item.valet}}</address>
+        <p>Consulte a disponbilidade do evento: <button v-on:click="availabilityEvent(item.id)">{{item.name}}</button></p>
+        <address>Bebidas: {{item.alcoholic_drink}}</address>
+        <address>Duração de {{item.duration_in_minutes}} minutos</address>
+        <address>Local fixo: {{item.fixed_location}}</address>
+        <address>Quantidade máxima de convidados: {{item.max_quantity_people}}</address>
+        <address>Quantidade máxima de convidados: {{item.min_quantity_people}}</address>
+        <address>Cardápio: {{item.menu}}</address>
+        <address>Estacionamento: {{item.parking}}</address>
+        <address>Decoração própria: {{item.self_decoration}}</address>
+        <address>Valet: {{item.valet}}</address>
       </div>
     </div>
 

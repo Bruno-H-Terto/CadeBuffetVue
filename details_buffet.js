@@ -49,6 +49,7 @@ createApp({
       item.zip_code = buffet.zip_code
       item.description = buffet.description
       item.payment_methods = buffet.payment_methods
+      item.phone_number = buffet.phone_number
       item.owner = buffet.owner_id
       item.id = buffet.id
       item.message = buffet.message
@@ -64,21 +65,31 @@ processEvents(events) {
   Array.from(events).forEach(event => {
     var item = new Object();
     item.name = event.name
-    item.alcoholic_drink = event.alcoholic_drink
     item.description = event.description
     item.duration_in_minutes = event.duration_in_minutes
-    item.fixed_location = event.fixed_location
     item.max_quantity_people = event.max_quantity_people
     item.min_quantity_people = event.min_quantity_people
     item.menu = event.menu
-    item.parking = event.parking
-    item.valet = event.valet
-    item.self_decoration = event.self_decoration
     item.owner = event.owner_id
     item.id = event.id
     item.buffet = event.buffet_id
     item.message = events.message
     
+    presences = []
+    results = []
+    presences = [event.alcoholic_drink, event.self_decoration, event.valet, event.parking, event.fixed_location]
+    presences.forEach(presence => {
+      if(presence){
+        results.push('Disponível')}
+      else{
+        results.push('Indisponível')
+      }
+    })
+    item.alcoholic_drink = results[0]
+    item.self_decoration = results[1]
+    item.valet = results[2]
+    item.parking = results[3]
+    item.fixed_location = results[4]
 
     this.listEvents.push(item)
 

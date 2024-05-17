@@ -34,7 +34,7 @@ createApp({
       const url = 'details_buffet.html?id=' + id;
       window.location.href = url;
     },
-    
+
     processBuffets(buffets) {
       buffets.forEach(buffet => {
         var item = new Object();
@@ -50,6 +50,7 @@ createApp({
         item.payment_methods = buffet.payment_methods
         item.owner = buffet.owner_id
         item.id = buffet.id
+        item.phone_number = buffet.phone_number
 
         this.listBuffets.push(item)
 

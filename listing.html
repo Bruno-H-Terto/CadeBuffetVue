@@ -27,16 +27,16 @@
       <li v-for="item in listResult" class="list-group-item">
         <div>
           <address><button v-on:click="detailsBuffet(item.id)">{{ item.brand_name }}</button></address>
-          <address>{{item.corporate_name}}</address>
-          <address>{{item.register_number}}</address>
-          <address>{{item.phone_number}}</address>
-          <address>{{item.address}}</address>
-          <address>{{item.district}}</address>
-          <address>{{item.state}}</address>
-          <address>{{item.city}}</address>
-          <address>{{item.zip_code}}</address>
-          <address>{{item.description}}</address>
-          <address>{{item.payment_methods}}</address>
+          <address>Nome Fantasia: {{item.corporate_name}}</address>
+          <address>CNPJ: {{item.register_number}}</address>
+          <address>Telefone para contato: {{item.phone_number}}</address>
+          <address>Endereço: {{item.address}}</address>
+          <address>Bairro: {{item.district}}</address>
+          <address>Estado: {{item.state}}</address>
+          <address>Cidade: {{item.city}}</address>
+          <address>CEP: {{item.zip_code}}</address>
+          <address>Descrição: {{item.description}}</address>
+          <address>Métodos de pagamento: {{item.payment_methods}}</address>
         </div>
       </li>
     </ul>

@@ -3,8 +3,13 @@ const { createApp, ref } = Vue;
 createApp({
   data() {
     return {
-      listResult: []
+      listResult: [],
+      eventData: [],
+      alerts: []
     };
+  },
+  created() {
+    this.getEventData();
   },
 
   methods: {
@@ -13,11 +18,21 @@ createApp({
       return await response.json();
     },
 
+    async getEventData(){
+      var url = document.location.href;
+      var params = url.split('?')[1].split('=')[1];
+      data = await this.fetchData(`http://localhost:3000/api/v1/events/${params}`)
+      this.processEvents(data);
+
+      
+    },
+
     async getDataResult(date, people) {
       var url = document.location.href;
       var params = url.split('?')[1].split('=')[1];
       let data = await this.fetchData(`http://localhost:3000/api/v1/events/${params}/avaliable_event?estimated_date=${date}&estimated_quantity_people=${people}`);
       this.processResult(data)
+
     },
     processResult(response) {
       this.listResult = []
@@ -42,7 +57,22 @@ createApp({
       this.listResult.push(result)
       })}
 
-},
+    },
+
+    processEvents(events) {
+      var alert = new Object();
+      alert.message = events.message
+      this.alerts.push(alert)
+      var item = new Object();
+      item.name = events.name
+      if(item.name === undefined){
+        this.eventData = []
+      }
+      else{
+        this.eventData.push(item)
+        console.log(this.eventData.name)}
+
+    },
 
     async availabilityEvent() {
       const formData = new FormData(document.getElementById('availabilityEvent'));
